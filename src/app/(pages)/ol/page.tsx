@@ -21,6 +21,7 @@ export default function OpenLayerMap() {
   const startPointRef = useRef<[number, number] | null>(null);
   const endPointRef = useRef<[number, number] | null>(null);
   const [route, setRoute] = useState<[number, number][] | null>(null);
+  const [showInstructions, setShowInstructions] = useState(true);
   const vectorSource = useRef(new VectorSource());
   const vectorLayer = useRef(
     new VectorLayer({
@@ -152,13 +153,33 @@ export default function OpenLayerMap() {
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <div ref={mapRef} className="w-2/3 h-2/3" />
-      <div className="absolute top-4 left-4 bg-white text-black p-4 rounded-lg shadow-lg max-w-50">
-        <h2 className="text-lg font-bold mb-2">Routing Instructions</h2>
-        <p>1. Click to set start point</p>
-        <p>2. Click to set end point</p>
-        <p>3. Click on calculate route button to calculate route</p>
-        <p>4. Click on reset button to reset the route</p>
-      </div>
+      {!showInstructions && (
+        <button
+          className="absolute top-4 left-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg"
+          onClick={() => {
+            setShowInstructions(!showInstructions);
+          }}
+        >
+          Show Instructions
+        </button>
+      )}
+      {showInstructions && (
+        <div className="absolute top-4 left-4 bg-white text-black p-4 rounded-lg shadow-lg max-w-50">
+          <button
+            className="absolute top-2 right-2 text-2xl font-bold"
+            onClick={() => {
+              setShowInstructions(!showInstructions);
+            }}
+          >
+            ✕
+          </button>
+          <h2 className="text-lg font-bold mb-2">Routing Instructions</h2>
+          <p>1. Click to set start point</p>
+          <p>2. Click to set end point</p>
+          <p>3. Click on calculate route button to calculate route</p>
+          <p>4. Click on reset button to reset the route</p>
+        </div>
+      )}
       <div className="absolute bottom-4 right-4 flex flex-col gap-2">
         <button
           onClick={() => {
