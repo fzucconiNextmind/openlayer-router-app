@@ -41,7 +41,7 @@ export default function OpenLayerMap() {
   ) => {
     try {
       const response = await fetch(
-        `https://router.project-osrm.org/route/v1/driving/${start[0]},${start[1]};${end[0]},${end[1]}?overview=full&geometries=geojson`
+        `https://router.project-osrm.org/route/v1/driving/${start[0]},${start[1]};${end[0]},${end[1]}?overview=full&alternatives=true&steps=true&geometries=geojson`
       );
       const data = await response.json();
       if (data.routes && data.routes[0]) {
