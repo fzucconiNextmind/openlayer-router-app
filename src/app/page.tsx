@@ -11,14 +11,25 @@ export default function Home() {
             Go to OpenLayer Map
           </button>
         </Link>
-        <Link
-          target="_blank"
-          href="https://openlayers.org/en/latest/examples/feature-move-animation.html"
-        >
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer">
-            Feature Move Animation (OpenLayer Example)
-          </button>
-        </Link>
+        <span className="text-sm text-gray-500">
+          sources:
+          <br />
+          <a
+            className="text-blue-500"
+            target="_blank"
+            href="https://openlayers.org/en/latest/examples/"
+          >
+            OpenLayer Map
+          </a>
+          <br />
+          <a
+            className="text-blue-500"
+            target="_blank"
+            href="https://map.project-osrm.org/"
+          >
+            OSRM Map
+          </a>
+        </span>
       </main>
     </div>
   );
